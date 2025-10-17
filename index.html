@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winter Nature Scene</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes gentleWave {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes cloudDrift {
+            0% {
+                transform: translateX(-100px);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+        
+        @keyframes confettiBurst {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-100px) rotate(180deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(300px) rotate(360deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes fadeInQuote {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .snowflake {
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            animation: snowfall linear infinite;
+            pointer-events: none;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+        
+        .mountain {
+            position: absolute;
+            bottom: 0;
+        }
+        
+        .tree {
+            position: absolute;
+            bottom: 0;
+            animation: gentleWave 4s ease-in-out infinite;
+        }
+        
+        .cloud {
+            position: absolute;
+            animation: cloudDrift 60s linear infinite;
+            opacity: 0.7;
+        }
+        
+        .nature-bg {
+            background: linear-gradient(
+                to bottom,
+                #87CEEB 0%,
+                #B0E0E6 30%,
+                #F0F8FF 60%,
+                #FFFFFF 100%
+            );
+        }
+        
+        .confetti-piece {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            animation: confettiBurst 2s ease-out forwards;
+        }
+        
+        .quote-appear {
+            animation: fadeInQuote 1s ease-out 1.5s forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen nature-bg overflow-hidden relative">
+    <!-- Sky and Clouds -->
+    <div class="cloud" style="top: 10%; left: -200px; animation-delay: 0s;">
+        <svg width="120" height="60" viewBox="0 0 120 60">
+            <ellipse cx="30" cy="40" rx="25" ry="15" fill="rgba(255,255,255,0.8)"/>
+            <ellipse cx="60" cy="30" rx="35" ry="20" fill="rgba(255,255,255,0.9)"/>
+            <ellipse cx="90" cy="40" rx="25" ry="15" fill="rgba(255,255,255,0.8)"/>
+        </svg>
+    </div>
+    
+    <div class="cloud" style="top: 20%; left: -150px; animation-delay: -20s;">
+        <svg width="100" height="50" viewBox="0 0 100 50">
+            <ellipse cx="25" cy="35" rx="20" ry="12" fill="rgba(255,255,255,0.7)"/>
+            <ellipse cx="50" cy="25" rx="30" ry="18" fill="rgba(255,255,255,0.8)"/>
+            <ellipse cx="75" cy="35" rx="20" ry="12" fill="rgba(255,255,255,0.7)"/>
+        </svg>
+    </div>
+    
+    <!-- Mountains -->
+    <div class="mountain" style="left: -10%; width: 40%; height: 60%;">
+        <svg width="100%" height="100%" viewBox="0 0 400 300" preserveAspectRatio="none">
+            <polygon points="0,300 150,50 300,120 400,80 400,300" fill="#4A5568" opacity="0.8"/>
+            <polygon points="0,300 150,50 250,90 300,120 400,300" fill="#2D3748" opacity="0.6"/>
+        </svg>
+    </div>
+    
+    <div class="mountain" style="right: -10%; width: 50%; height: 70%;">
+        <svg width="100%" height="100%" viewBox="0 0 500 350" preserveAspectRatio="none">
+            <polygon points="0,350 100,40 250,80 400,30 500,60 500,350" fill="#2D3748" opacity="0.7"/>
+            <polygon points="100,350 200,60 350,100 500,50 500,350" fill="#4A5568" opacity="0.5"/>
+        </svg>
+    </div>
+    
+    <!-- Snow-covered Hills -->
+    <div class="absolute bottom-0 w-full h-32">
+        <svg width="100%" height="100%" viewBox="0 0 1200 128" preserveAspectRatio="none">
+            <path d="M0,128 C300,80 600,100 900,60 C1000,40 1100,50 1200,80 L1200,128 Z" fill="#F7FAFC"/>
+            <path d="M0,128 C200,90 400,110 600,85 C800,60 1000,70 1200,90 L1200,128 Z" fill="#EDF2F7" opacity="0.8"/>
+        </svg>
+    </div>
+    
+    <!-- Evergreen Trees -->
+    <div class="tree" style="left: 15%; animation-delay: 0s;">
+        <svg width="60" height="120" viewBox="0 0 60 120">
+            <!-- Tree trunk -->
+            <rect x="26" y="100" width="8" height="20" fill="#8B4513"/>
+            <!-- Tree layers -->
+            <polygon points="30,100 10,70 50,70" fill="#0F4C3A"/>
+            <polygon points="30,80 12,55 48,55" fill="#1A5D4A"/>
+            <polygon points="30,65 15,40 45,40" fill="#0F4C3A"/>
+            <polygon points="30,50 18,25 42,25" fill="#1A5D4A"/>
+            <polygon points="30,35 20,10 40,10" fill="#0F4C3A"/>
+        </svg>
+    </div>
+    
+    <div class="tree" style="left: 25%; animation-delay: -1s;">
+        <svg width="80" height="140" viewBox="0 0 80 140">
+            <rect x="36" y="115" width="8" height="25" fill="#8B4513"/>
+            <polygon points="40,115 15,80 65,80" fill="#0F4C3A"/>
+            <polygon points="40,95 18,65 62,65" fill="#1A5D4A"/>
+            <polygon points="40,75 22,45 58,45" fill="#0F4C3A"/>
+            <polygon points="40,55 25,25 55,25" fill="#1A5D4A"/>
+            <polygon points="40,35 28,5 52,5" fill="#0F4C3A"/>
+        </svg>
+    </div>
+    
+    <div class="tree" style="right: 20%; animation-delay: -2s;">
+        <svg width="70" height="130" viewBox="0 0 70 130">
+            <rect x="31" y="110" width="8" height="20" fill="#8B4513"/>
+            <polygon points="35,110 12,75 58,75" fill="#0F4C3A"/>
+            <polygon points="35,90 16,60 54,60" fill="#1A5D4A"/>
+            <polygon points="35,70 20,40 50,40" fill="#0F4C3A"/>
+            <polygon points="35,50 23,20 47,20" fill="#1A5D4A"/>
+            <polygon points="35,30 25,0 45,0" fill="#0F4C3A"/>
+        </svg>
+    </div>
+    
+    <div class="tree" style="right: 35%; animation-delay: -0.5s;">
+        <svg width="50" height="100" viewBox="0 0 50 100">
+            <rect x="21" y="85" width="8" height="15" fill="#8B4513"/>
+            <polygon points="25,85 8,60 42,60" fill="#0F4C3A"/>
+            <polygon points="25,70 12,50 38,50" fill="#1A5D4A"/>
+            <polygon points="25,55 15,35 35,35" fill="#0F4C3A"/>
+            <polygon points="25,40 18,20 32,20" fill="#1A5D4A"/>
+            <polygon points="25,25 20,5 30,5" fill="#0F4C3A"/>
+        </svg>
+    </div>
+    
+    <!-- Content Area -->
+    <div class="relative z-10 flex items-center justify-center min-h-screen">
+        <div class="text-center max-w-2xl mx-auto">
+            <h1 class="text-5xl font-bold text-gray-800 mb-4 drop-shadow-lg">❄️ Winter Quotes ❄️</h1>
+            <p class="text-xl text-gray-700 mb-8 drop-shadow-sm">Find inspiration in this peaceful winter wonderland</p>
+            
+            <div class="relative mb-8">
+                <button id="bloomButton" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg transform hover:scale-105 transition-all duration-200">
+                    🎊 Burst Winter Confetti!
+                </button>
+            </div>
+            
+            <div id="confettiContainer" class="relative flex justify-center items-center h-64 mb-8">
+                <!-- Confetti will appear here -->
+            </div>
+            
+            <div id="quoteContainer" class="bg-white/30 backdrop-blur-md rounded-2xl p-6 shadow-xl max-w-lg mx-auto border border-white/40" style="display: none;">
+                <div id="quoteEmoji" class="text-6xl mb-4 text-center drop-shadow-lg"></div>
+                <p id="quoteText" class="text-lg text-gray-800 italic mb-4 font-medium"></p>
+                <button id="nextButton" class="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200">
+                    ❄️ Another Winter Quote
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quotes array
+        const quotes = [
+            {
+                text: "Believe you can and you're halfway there.",
+                emoji: "💪🏔️"
+            },
+            {
+                text: "The only way to do great work is to love what you do.",
+                emoji: "❤️💼"
+            },
+            {
+                text: "Life is what happens to you while you're busy making other plans.",
+                emoji: "🌊📅"
+            },
+            {
+                text: "The future belongs to those who believe in the beauty of their dreams.",
+                emoji: "🌟💭"
+            },
+            {
+                text: "It is during our darkest moments that we must focus to see the light.",
+                emoji: "🕯️🌅"
+            },
+            {
+                text: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+                emoji: "🏆💪"
+            },
+            {
+                text: "The only impossible journey is the one you never begin.",
+                emoji: "🚀🛤️"
+            },
+            {
+                text: "In the middle of difficulty lies opportunity.",
+                emoji: "⛰️💎"
+            },
+            {
+                text: "Be yourself; everyone else is already taken.",
+                emoji: "🦄✨"
+            },
+            {
+                text: "You are never too old to set another goal or to dream a new dream.",
+                emoji: "🌙🎯"
+            }
+        ];
+
+        // Get DOM elements
+        const bloomButton = document.getElementById('bloomButton');
+        const confettiContainer = document.getElementById('confettiContainer');
+        const quoteContainer = document.getElementById('quoteContainer');
+        const quoteText = document.getElementById('quoteText');
+        const quoteEmoji = document.getElementById('quoteEmoji');
+        const nextButton = document.getElementById('nextButton');
+
+        // Quote functions
+        function getRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            return quotes[randomIndex];
+        }
+
+        function createConfetti() {
+            const colors = ['#3b82f6', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#ec4899', '#6366f1'];
+            const shapes = ['circle', 'square', 'triangle'];
+            
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-piece';
+                
+                // Random color
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random shape
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                if (shape === 'circle') {
+                    confetti.style.borderRadius = '50%';
+                } else if (shape === 'triangle') {
+                    confetti.style.width = '0';
+                    confetti.style.height = '0';
+                    confetti.style.borderLeft = '6px solid transparent';
+                    confetti.style.borderRight = '6px solid transparent';
+                    confetti.style.borderBottom = `12px solid ${color}`;
+                    confetti.style.background = 'transparent';
+                } else {
+                    confetti.style.borderRadius = '2px';
+                }
+                
+                if (shape !== 'triangle') {
+                    confetti.style.backgroundColor = color;
+                }
+                
+                // Random position
+                confetti.style.left = Math.random() * 100 + '%';
+                
+                // Random delay
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                
+                // Random duration
+                confetti.style.animationDuration = (Math.random() * 1 + 1.5) + 's';
+                
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        function burstConfetti() {
+            // Clear previous confetti
+            confettiContainer.innerHTML = '';
+            quoteContainer.style.display = 'none';
+            
+            // Create confetti burst
+            createConfetti();
+            
+            // Get random quote
+            const quote = getRandomQuote();
+            quoteText.textContent = quote.text;
+            quoteEmoji.textContent = quote.emoji;
+            
+            // Show quote after confetti bursts
+            setTimeout(() => {
+                quoteContainer.style.display = 'block';
+                quoteContainer.classList.add('quote-appear');
+            }, 1500);
+            
+            // Hide burst button temporarily
+            bloomButton.style.display = 'none';
+        }
+
+        function resetGame() {
+            confettiContainer.innerHTML = '';
+            quoteContainer.style.display = 'none';
+            quoteContainer.classList.remove('quote-appear');
+            bloomButton.style.display = 'inline-block';
+        }
+
+        // Event listeners
+        bloomButton.addEventListener('click', burstConfetti);
+        nextButton.addEventListener('click', resetGame);
+
+        // Create snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            
+            // Random snowflake characters
+            const snowflakes = ['❄', '❅', '❆', '✻', '✼', '❋'];
+            snowflake.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
+            
+            // Random horizontal position
+            snowflake.style.left = Math.random() * 100 + '%';
+            
+            // Random size
+            const size = Math.random() * 10 + 8;
+            snowflake.style.fontSize = size + 'px';
+            
+            // Random animation duration (falling speed)
+            const duration = Math.random() * 15 + 10;
+            snowflake.style.animationDuration = duration + 's';
+            
+            // Random delay
+            snowflake.style.animationDelay = Math.random() * 5 + 's';
+            
+            // Random opacity
+            snowflake.style.opacity = Math.random() * 0.6 + 0.4;
+            
+            document.body.appendChild(snowflake);
+            
+            // Remove snowflake after animation
+            setTimeout(() => {
+                if (snowflake.parentNode) {
+                    snowflake.parentNode.removeChild(snowflake);
+                }
+            }, (duration + 5) * 1000);
+        }
+        
+        // Create initial snowflakes
+        for (let i = 0; i < 50; i++) {
+            setTimeout(() => createSnowflake(), Math.random() * 5000);
+        }
+        
+        // Continuously create new snowflakes
+        setInterval(createSnowflake, 300);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98fd6559265aca8c',t:'MTc2MDY3ODk0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
